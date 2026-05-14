@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 import os
 
-API_URL = "https://app-crud-gtob.onrender.com"
+API_URL = "https://projeto-final-1-3srl.onrender.com"
 
 st.set_page_config(page_title="Biblioteca Digital", layout="wide")
 
