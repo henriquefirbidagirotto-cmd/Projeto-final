@@ -20,7 +20,7 @@ class Usuario(Base):
     password_hash = Column(String)
 
 class Carros(Base):
-    __tablename__ = "Carros"
+    __tablename__ = "carros"
     id = Column(Integer, primary_key=True, index=True)
     Carro = Column(String)
     Ano = Column(String)
