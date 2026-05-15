@@ -43,7 +43,7 @@ if st.session_state.token:
             st.rerun()
 
     # LISTAGEM E AÇÕES
-    livros = requests.get(f"{API_URL}/Carros").json()
+    livros = requests.get(f"{API_URL}/Livros").json()
     for l in livros:
         with st.container(border=True):
             col_info, col_del = st.columns([4, 1])
