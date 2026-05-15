@@ -3,7 +3,7 @@ from app.controllers.main import router
 from app.models.database import init_db
 from app.models.database import engine, Base
 
-app = FastAPI(title="API Biblioteca Digital")
+app = FastAPI(title="API Con Digital")
 
 
 

@@ -26,23 +26,24 @@ def login(dados: dict, db: Session = Depends(get_db)):
     return {"token": criar_token({"sub": user.username})}
 
 # CRUD LIVROS
-@router.get("/livros")
+@router.get("/Carros")
 def listar_livros(db: Session = Depends(get_db)):
     return db.query(Livro).all()
 
-@router.post("/livros")
+@router.post("/Carros")
 def criar_livro(livro: dict, db: Session = Depends(get_db)):
     novo = Livro(titulo=livro['titulo'], autor=livro['autor'])
     db.add(novo)
     db.commit()
     return {"status": "criado"}
 
-@router.put("/livros/{id}")
+@router.put("/Carros/{id}")
 def editar_livro(id: int, dados: dict, db: Session = Depends(get_db)):
     livro = db.query(Livro).filter(Livro.id == id).first()
     if not livro: raise HTTPException(status_code=404)
-    livro.titulo = dados['titulo']
-    livro.autor = dados['autor']
+    livro.carro = dados['carro']
+    livro.ano = dados['ano']
+    livro.Cambio = dados['cambio']
     db.commit()
     return {"status": "atualizado"}
 

@@ -2,9 +2,9 @@ import streamlit as st
 import requests
 import os
 
-API_URL = "https://app-crud-gtob.onrender.com"
+API_URL = "https://projeto-final-1-3srl.onrender.com"
 
-st.set_page_config(page_title="Biblioteca Digital", layout="wide")
+st.set_page_config(page_title="Concessionria digital", layout="wide")
 
 if "token" not in st.session_state:
     st.session_state.token = None
@@ -28,21 +28,22 @@ with st.sidebar:
             st.rerun()
 
 # --- INTERFACE CRUD ---
-st.title("Gestão de Acervo")
+st.title("Gestão de carros")
 
 if st.session_state.token:
     # FORMULÁRIO DE CRIAÇÃO
     with st.expander("Novo Registro"):
-        c1, c2 = st.columns(2)
-        tit = c1.text_input("Título do Livro")
-        aut = c2.text_input("Autor")
+        c1, c2, c3 = st.columns(3)
+        tit = c1.text_input("Carro")
+        aut = c2.text_input("Ano")
+        das = c3.text_input("Cambio")
         if st.button("Salvar Livro"):
-            requests.post(f"{API_URL}/livros", json={"titulo": tit, "autor": aut})
-            st.toast("Livro adicionado!")
+            requests.post(f"{API_URL}/Carros", json={"Carro": tit, "Ano": aut, "Cambio": das})
+            st.toast("Pedido adicionado!")
             st.rerun()
 
     # LISTAGEM E AÇÕES
-    livros = requests.get(f"{API_URL}/livros").json()
+    livros = requests.get(f"{API_URL}/Carros").json()
     for l in livros:
         with st.container(border=True):
             col_info, col_del = st.columns([4, 1])
@@ -51,4 +52,4 @@ if st.session_state.token:
                 requests.delete(f"{API_URL}/livros/{l['id']}")
                 st.rerun()
 else:
-    st.info("Acesse com seu usuário para gerenciar os livros.")
+    st.info("Acesse com seu usuário para gerenciar os carros.")
