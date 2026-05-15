@@ -32,7 +32,7 @@ def listar_livros(db: Session = Depends(get_db)):
 
 @router.post("/Carros")
 def criar_livro(Carros: dict, db: Session = Depends(get_db)):
-    novo = Livro(Carro=carro['titulo'], autor=livro['autor'])
+    novo = Livro(Carros=Carro['Carro'], Carros=Ano['Ano'], Carros=Cambio['Cambio'])
     db.add(novo)
     db.commit()
     return {"status": "criado"}
