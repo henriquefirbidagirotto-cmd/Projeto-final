@@ -47,7 +47,7 @@ if st.session_state.token:
     for l in livros:
         with st.container(border=True):
             col_info, col_del = st.columns([4, 1])
-            col_info.write(f"**{l['titulo']}** | {l['autor']}")
+            col_info.write(f"**{l['Carro']}** | {l['Ano']}")
             if col_del.button("Excluir", key=f"del_{l['id']}"):
                 requests.delete(f"{API_URL}/livros/{l['id']}")
                 st.rerun()
