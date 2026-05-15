@@ -28,11 +28,11 @@ def login(dados: dict, db: Session = Depends(get_db)):
 # CRUD LIVROS
 @router.get("/Carros")
 def listar_livros(db: Session = Depends(get_db)):
-    return db.query(Livro).all()
+    return db.query(carros).all()
 
 @router.post("/Carros")
-def criar_livro(livro: dict, db: Session = Depends(get_db)):
-    novo = Livro(titulo=livro['titulo'], autor=livro['autor'])
+def criar_livro(Carros: dict, db: Session = Depends(get_db)):
+    novo = Livro(Carro=carro['titulo'], autor=livro['autor'])
     db.add(novo)
     db.commit()
     return {"status": "criado"}
