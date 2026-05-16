@@ -39,17 +39,17 @@ def criar_livro(Carros: dict, db: Session = Depends(get_db)):
 
 @router.put("/Carros/{id}")
 def editar_livro(id: int, dados: dict, db: Session = Depends(get_db)):
-    livro = db.query(Livro).filter(Livro.id == id).first()
+    carro = db.query(Carros).filter(Carros.id == id).first()
     if not livro: raise HTTPException(status_code=404)
-    livro.carro = dados['carro']
-    livro.ano = dados['ano']
-    livro.Cambio = dados['cambio']
+    carro.carro = dados['carro']
+    carro.ano = dados['ano']
+    carro.Cambio = dados['cambio']
     db.commit()
     return {"status": "atualizado"}
 
 @router.delete("/Carros/{id}")
 def excluir_livro(id: int, db: Session = Depends(get_db)):
-    livro = db.query(Livro).filter(Livro.id == id).first()
+    livro = db.query(Carros).filter(Carros.id == id).first()
     if not livro: raise HTTPException(status_code=404)
     db.delete(livro)
     db.commit()
