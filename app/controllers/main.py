@@ -27,18 +27,18 @@ def login(dados: dict, db: Session = Depends(get_db)):
 
 # CRUD LIVROS
 @router.get("/Carros")
-def listar_livros(db: Session = Depends(get_db)):
+def listar_carros(db: Session = Depends(get_db)):
     return db.query(carros).all()
 
 @router.post("/Carros")
-def criar_livro(Carros: dict, db: Session = Depends(get_db)):
-    novo = Livro(Carros=Carro['Carro'], Carros=Ano['Ano'], Carros=Cambio['Cambio'])
+def criar_carros(Carros: dict, db: Session = Depends(get_db)):
+    novo = Carros(Carros=Carro['Carro'], Carros=Ano['Ano'], Carros=Cambio['Cambio'])
     db.add(novo)
     db.commit()
     return {"status": "criado"}
 
 @router.put("/Carros/{id}")
-def editar_livro(id: int, dados: dict, db: Session = Depends(get_db)):
+def editar_carros(id: int, dados: dict, db: Session = Depends(get_db)):
     carro = db.query(Carros).filter(Carros.id == id).first()
     if not livro: raise HTTPException(status_code=404)
     carro.carro = dados['carro']
@@ -48,7 +48,7 @@ def editar_livro(id: int, dados: dict, db: Session = Depends(get_db)):
     return {"status": "atualizado"}
 
 @router.delete("/Carros/{id}")
-def excluir_livro(id: int, db: Session = Depends(get_db)):
+def excluir_carros(id: int, db: Session = Depends(get_db)):
     livro = db.query(Carros).filter(Carros.id == id).first()
     if not livro: raise HTTPException(status_code=404)
     db.delete(livro)
