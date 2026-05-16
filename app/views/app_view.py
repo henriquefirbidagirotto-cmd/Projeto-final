@@ -43,13 +43,13 @@ if st.session_state.token:
             st.rerun()
 
     # LISTAGEM E AÇÕES
-    livros = requests.get(f"{API_URL}/Livros").json()
-    for l in livros:
+    Carros = requests.get(f"{API_URL}/Carros").json()
+    for l in Carros:
         with st.container(border=True):
             col_info, col_del = st.columns([4, 1])
             col_info.write(f"**{l['Carro']}** | {l['Ano']}")
             if col_del.button("Excluir", key=f"del_{l['id']}"):
-                requests.delete(f"{API_URL}/livros/{l['id']}")
+                requests.delete(f"{API_URL}/Carros/{l['id']}")
                 st.rerun()
 else:
     st.info("Acesse com seu usuário para gerenciar os carros.")
