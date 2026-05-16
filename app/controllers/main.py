@@ -49,8 +49,8 @@ def editar_carros(id: int, dados: dict, db: Session = Depends(get_db)):
 
 @router.delete("/Carros/{id}")
 def excluir_carros(id: int, db: Session = Depends(get_db)):
-    livro = db.query(Carros).filter(Carros.id == id).first()
-    if not livro: raise HTTPException(status_code=404)
-    db.delete(livro)
+    carro = db.query(Carros).filter(Carros.id == id).first()
+    if not carro: raise HTTPException(status_code=404)
+    db.delete(carro)
     db.commit()
     return {"status": "removido"}
